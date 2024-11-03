@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Scroll Relatively</title>
-<script src="../src/smoothscroll.js"></script>
+<script src="../dist/fluidscroll.umd.js"></script>
 <style>
 html, body {
 	height: 5000px;
@@ -18,17 +18,17 @@ html, body {
 	<button id="minusPercent">-10%</button>
 </div>
 <script>
-document.getElementById("plusPx").addEventListener("click", function(e){
-	smoothScroll({yPos: '+100', duration: 200});
+document.getElementById("plusPx").addEventListener("click", function(e) {
+	fluidScroll({yPos: '+100', duration: 200});
 });
-document.getElementById("plusPercent").addEventListener("click", function(e){
-	smoothScroll({yPos: '+10%'});
+document.getElementById("plusPercent").addEventListener("click", function(e) {
+	fluidScroll({yPos: '+10%'});
 });
-document.getElementById("minusPx").addEventListener("click", function(e){
-	smoothScroll({yPos: '-100', duration: 200});
+document.getElementById("minusPx").addEventListener("click", function(e) {
+	fluidScroll({yPos: '-100', duration: 200});
 });
-document.getElementById("minusPercent").addEventListener("click", function(e){
-	smoothScroll({yPos: '-10%'});
+document.getElementById("minusPercent").addEventListener("click", function(e) {
+	fluidScroll({yPos: '-10%'});
 });
 </script>
 </body>

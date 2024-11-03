@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Scroll X Example</title>
-<script src="../src/smoothscroll.js"></script>
+<script src="../dist/fluidscroll.umd.js"></script>
 <style>
 html, body {
 	width: 2500px;
@@ -13,8 +13,8 @@ html, body {
 <body>
 <button>Scroll to x-position 700px in 1s</button>
 <script>
-document.querySelector('button').addEventListener('click', function(e){
-	smoothScroll({xPos: 700, duration: 1000});
+document.querySelector('button').addEventListener('click', function(e) {
+	fluidScroll({xPos: 700, duration: 1000});
 });
 </script>
 </body>

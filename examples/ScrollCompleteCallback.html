@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Scroll Complete Callback</title>
-<script src="../src/smoothscroll.js"></script>
+<script src="../dist/fluidscroll.umd.js"></script>
 <style>
 html, body {
 	height: 4000px;
@@ -13,8 +13,8 @@ html, body {
 <body>
 <button>Scroll to y-position 1500px in 2s</button>
 <script>
-document.querySelector('button').addEventListener('click', function(e){
-	smoothScroll({
+document.querySelector('button').addEventListener('click', function(e) {
+	fluidScroll({
 		yPos: 1500, 
 		duration: 2000, 
 		complete: function(){

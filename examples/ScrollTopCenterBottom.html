@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Scroll To Top, Center, and Bottom</title>
-<script src="../src/smoothscroll.js"></script>
+<script src="../dist/fluidscroll.umd.js"></script>
 </head>
 <body>
 <button class="to-center">Scroll To Center</button> 
@@ -15,12 +15,12 @@
 <button class="to-center">Scroll To Center</button> <button class="to-start">Scroll To Top</button>
 <script>
 var positions = ['start', 'center', 'end'];
-for(var i = 0; i < positions.length; i++){
-	(function(position){
+for (var i = 0; i < positions.length; i++) {
+	(function(position) {
 		var btns = document.querySelectorAll('button.to-' + position);
-		for(var j = 0; j < btns.length; j++){
-			btns[j].addEventListener('click', function(e){
-				smoothScroll({yPos: position});
+		for (var j = 0; j < btns.length; j++) {
+			btns[j].addEventListener('click', function(e) {
+				fluidScroll({yPos: position});
 			});
 		}
 	})(positions[i]);
