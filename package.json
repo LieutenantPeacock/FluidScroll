@@ -1,0 +1,48 @@
+{
+    "name": "fluidscroll",
+    "version": "2.0.0",
+    "description": "A cross-browser compatible, lightweight, easy-to-use library for smooth scrolling.",
+    "main": "dist/fluidscroll.umd.js",
+    "module": "dist/fluidscroll.esm.mjs",
+    "exports": {
+        ".": {
+            "import": "./dist/fluidscroll.esm.mjs",
+            "require": "./dist/fluidscroll.umd.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "directories": {
+        "example": "examples"
+    },
+    "scripts": {
+        "clean": "rimraf dist",
+        "build": "rollup -c"
+    },
+    "keywords": [
+        "scroll",
+        "scrolling",
+        "smooth",
+        "smooth scrolling",
+        "smooth scroll",
+        "web"
+    ],
+    "author": "LieutenantPeacock",
+    "license": "MIT",
+    "devDependencies": {
+        "@rollup/plugin-terser": "^0.4.4",
+        "prettier": "3.3.3",
+        "rimraf": "^6.0.1",
+        "rollup": "^4.24.3",
+        "rollup-plugin-license": "^3.5.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LieutenantPeacock/FluidScroll.git"
+    },
+    "bugs": {
+        "url": "https://github.com/LieutenantPeacock/FluidScroll/issues"
+    },
+    "homepage": "https://github.com/LieutenantPeacock/FluidScroll#readme"
+}
