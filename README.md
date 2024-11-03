@@ -1,9 +1,65 @@
-# SmoothScroll.js
+# FluidScroll
 
-A cross-browser compatible, lightweight, easy-to-use library for smooth scrolling!
+A cross-browser compatible, lightweight, easy-to-use library for smooth scrolling.
 
 ```js
-smoothScroll({options});
+fluidScroll({ options });
+```
+
+## Installation
+
+This library can be installed with NPM.
+
+```bash
+npm i fluidscroll
+```
+
+Then, it may be used in this manner:
+
+```js
+// ES Module
+import { fluidScroll } from 'fluidscroll';
+
+// CommonJS
+const fluidScroll = require('fluidscroll');
+```
+
+Alternatively, it can be directly included as a script on any HTML page. For example, with a CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/fluidscroll@2.0.0" integrity="sha384-ZvfwaJZFftLPOaPS13spccPYdWRcrfz/GDgUYAf7b6I2OBXY74KiAC6WVg0XF3Qq" crossorigin="anonymous"></script>
+```
+
+You can also manually download [dist/fluidscroll.umd.min.js](dist/fluidscroll.umd.min.js) and include it in the head of the page using your own path:
+
+```html
+<script src="path/to/fluidscroll.min.js"></script>
+```
+
+It can additionally be used in a module script:
+
+```html
+<script type="module">
+    import { fluidScroll } from 'https://cdn.jsdelivr.net/npm/fluidscroll@2.0.0/dist/fluidscroll.esm.mjs';
+</script>
+```
+
+Import maps can furthermore be used to simplify the module specifier when importing as well as check the integrity.
+
+```html
+<script type="importmap">
+    {
+        "imports": {
+            "fluidscroll": "https://cdn.jsdelivr.net/npm/fluidscroll@2.0.0/dist/fluidscroll.esm.mjs"
+        },
+        "integrity": {
+            "https://cdn.jsdelivr.net/npm/fluidscroll@2.0.0/dist/fluidscroll.esm.mjs": "sha384-uRZwvJLM1xS19wbYkR8/uqMLzM58mVHEluImXjOaBV4H3LerGAjCSGbQfBYrpNCQ"
+        }
+    }
+</script>
+<script type="module">
+    import { fluidScroll } from 'fluidscroll';
+</script>
 ```
 
 ## Simple Uses
@@ -11,33 +67,21 @@ smoothScroll({options});
 Scroll to y-position 1000px in 750 milliseconds:
 
 ```js
-smoothScroll({yPos: 1000, duration: 750});
+fluidScroll({yPos: 1000, duration: 750});
 ```
 
 Scroll to the bottom of the page:
 
 ```js
-smoothScroll({yPos: 'end'});
+fluidScroll({yPos: 'end'});
 ```
 
 Scroll to x-position 500px and y-position 500px:
 
 ```js
-smoothScroll({xPos: 500, yPos: 500});
+fluidScroll({xPos: 500, yPos: 500});
 ```
 
-## Including the Script
-The script can be included via CDN by adding the following into the head of the HTML page:
-
-```html
-<script src="https://cdn.jsdelivr.net/gh/LieutenantPeacock/SmoothScroll@1.2.0/src/smoothscroll.min.js" integrity="sha384-UdJHYJK9eDBy7vML0TvJGlCpvrJhCuOPGTc7tHbA+jHEgCgjWpPbmMvmd/2bzdXU" crossorigin="anonymous"></script>
-```
-
-You can also download [smoothscroll.min.js](src/smoothscroll.min.js) and include it in the head of the page using your own path:
-
-```html
-<script src="path/to/smoothscroll.min.js"></script>
-```
 
 ## Options
 
@@ -95,7 +139,7 @@ You can also download [smoothscroll.min.js](src/smoothscroll.min.js) and include
 	<tr>
 		<td>easing</td>
 		<td>The easing function. It can either be a string that is the name of one of the
-		predefined easing functions (in <code>smoothScroll.easing</code>), or a function
+		predefined easing functions (in <code>fluidScroll.easing</code>), or a function
 		that accepts the percentage of time that has passed (in its decimal form, between 0 and 1)
 		and returns the percentage of the scrolling distance to scroll to at the current time
 		(as a number between 0 and 1).</td>
@@ -179,11 +223,11 @@ You can also download [smoothscroll.min.js](src/smoothscroll.min.js) and include
 
 ## Return Value
 
-`smoothScroll` returns an object with the `destroy` property which is a function that stops
+`fluidScroll` returns an object with the `destroy` property which is a function that stops
 the scrolling when called.
 
 ```js
-var s = smoothScroll({yPos: 5000, duration: 3000});
+var s = fluidScroll({yPos: 5000, duration: 3000});
 // Stop the scrolling sometime later
 s.destroy();
 ```
@@ -191,39 +235,38 @@ s.destroy();
 ## Instantiation
 
 Using the `new` operator will create an instance with the passed in options as defaults. Properties
-specified in this options object will override the original defaults. Call the `smoothScroll` method on
+specified in this options object will override the original defaults. Call the `fluidScroll` method on
 the returned value to perform smooth scrolling with these defaults.
 
 ```js
-var scroller = new smoothScroll({duration: 700, block: 'center'});
-scroller.smoothScroll({yPos: 500}); // duration is 700 (rather than the original default of 500)
+var scroller = new fluidScroll({duration: 700, block: 'center'});
+scroller.fluidScroll({yPos: 500}); // duration is 700 (rather than the original default of 500)
 ```
 
 ## Getting and Setting Global Defaults
 
-`smoothScroll.defaults()` returns an object containing the default values for each option.
+`fluidScroll.defaults()` returns an object containing the default values for each option.
 <br>
-Passing an object to `smoothScroll.defaults` will overwrite each option in the defaults with 
+Passing an object to `fluidScroll.defaults` will overwrite each option in the defaults with 
 the value from that object if it is set.
 
 ```js
-smoothScroll.defaults({duration: 700}); // set default duration to 700ms
+fluidScroll.defaults({duration: 700}); // set default duration to 700ms
 ```
 
 ## Other Methods and Properties
 
-`smoothScroll.stopAll()` stops all current scroll animations and returns `true`/`false` depending
+`fluidScroll.stopAll()` stops all current scroll animations and returns `true`/`false` depending
 on whether there were running animations that were stopped.
 
-`smoothScroll.scrolling()` returns `true`/`false` depending on whether or not there are current scrolling
+`fluidScroll.scrolling()` returns `true`/`false` depending on whether or not there are current scrolling
 animations.
 
-`smoothScroll.nativeSupported` indicates whether or not the CSS `scroll-behavior` property is supported
+`fluidScroll.nativeSupported` indicates whether or not the CSS `scroll-behavior` property is supported
 in the current browser.
 
-`smoothScroll.easing` is an object containing the predefined easing functions.
+`fluidScroll.easing` is an object containing the predefined easing functions.
 
 ## Examples
 
-Examples of common use cases can be found in the [examples](examples) folder. Note that many newer JavaScript
-features are not used in order to demonstrate more cross-browser compatible code.
+Examples of common use cases can be found in the [examples](examples) folder. These can be run by cloning the repository, then opening any of the HTML files in a browser. Note that many newer JavaScript features are not used in order to demonstrate more cross-browser compatible code.
