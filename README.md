@@ -27,7 +27,7 @@ const fluidScroll = require('fluidscroll');
 Alternatively, it can be directly included as a script on any HTML page. For example, with a CDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/fluidscroll@2.0.0" integrity="sha384-ZvfwaJZFftLPOaPS13spccPYdWRcrfz/GDgUYAf7b6I2OBXY74KiAC6WVg0XF3Qq" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/fluidscroll@2.0.1" integrity="sha384-KFyMpzcyJiRcSuiZ6Aq6nzM4sJBTukBFS4nxTQxATRfI0EEwytxhZvuFl2tfYY2b" crossorigin="anonymous"></script>
 ```
 
 You can also manually download [dist/fluidscroll.umd.min.js](dist/fluidscroll.umd.min.js) and include it in the head of the page using your own path:
@@ -40,7 +40,7 @@ It can additionally be used in a module script:
 
 ```html
 <script type="module">
-    import { fluidScroll } from 'https://cdn.jsdelivr.net/npm/fluidscroll@2.0.0/dist/fluidscroll.esm.mjs';
+    import { fluidScroll } from 'https://cdn.jsdelivr.net/npm/fluidscroll@2.0.1/dist/fluidscroll.esm.mjs';
 </script>
 ```
 
@@ -50,10 +50,10 @@ Import maps can furthermore be used to simplify the module specifier when import
 <script type="importmap">
     {
         "imports": {
-            "fluidscroll": "https://cdn.jsdelivr.net/npm/fluidscroll@2.0.0/dist/fluidscroll.esm.mjs"
+            "fluidscroll": "https://cdn.jsdelivr.net/npm/fluidscroll@2.0.1/dist/fluidscroll.esm.mjs"
         },
         "integrity": {
-            "https://cdn.jsdelivr.net/npm/fluidscroll@2.0.0/dist/fluidscroll.esm.mjs": "sha384-uRZwvJLM1xS19wbYkR8/uqMLzM58mVHEluImXjOaBV4H3LerGAjCSGbQfBYrpNCQ"
+            "https://cdn.jsdelivr.net/npm/fluidscroll@2.0.1/dist/fluidscroll.esm.mjs": "sha384-ysYKoDRkdemiS0d72uiqaHQ0QIjgnmrMJDu0WoZUX0N6jPvOldyIImA9UkPdxFsD"
         }
     }
 </script>

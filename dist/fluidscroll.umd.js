@@ -1,10 +1,10 @@
 /**
  * Copyright (c) 2024 LieutenantPeacock
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
@@ -436,22 +436,25 @@
 	};
 	var prefixes = ["Quad", "Cubic", "Quart", "Quint", "Expo"];
 	for (var i = 0; i < prefixes.length; i++) {
-		base[prefixes[i]] = function(p) {
-			return Math.pow(p, i + 2);
-		};
+		base[prefixes[i]] = (function(exponent) {
+			return function(p) {
+				return Math.pow(p, exponent);
+			};
+		})(i + 2);
 	}
 	for (var key in base) {
 		if (key != null && base[key] != null) {
-			var easeIn = base[key];
-			fluidScroll.easing["easeIn" + key] = easeIn;
-			fluidScroll.easing["easeOut" + key] = function(p) {
-				return 1 - easeIn(1 - p);
-			};
-			fluidScroll.easing["easeInOut" + key] = function(p) {
-				return p < 0.5 ?
-					easeIn(p * 2) / 2 :
-					1 - easeIn(p * -2 + 2) / 2;
-			};
+			(function(easeIn) {
+				fluidScroll.easing["easeIn" + key] = easeIn;
+				fluidScroll.easing["easeOut" + key] = function(p) {
+					return 1 - easeIn(1 - p);
+				};
+				fluidScroll.easing["easeInOut" + key] = function(p) {
+					return p < 0.5 ?
+						easeIn(p * 2) / 2 :
+						1 - easeIn(p * -2 + 2) / 2;
+				};
+			})(base[key]);
 		}
 	}
 	fluidScroll.scrolling = function() {
