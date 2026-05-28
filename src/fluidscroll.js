@@ -420,22 +420,25 @@ var base = {
 };
 var prefixes = ["Quad", "Cubic", "Quart", "Quint", "Expo"];
 for (var i = 0; i < prefixes.length; i++) {
-	base[prefixes[i]] = function(p) {
-		return Math.pow(p, i + 2);
-	};
+	base[prefixes[i]] = (function(exponent) {
+		return function(p) {
+			return Math.pow(p, exponent);
+		};
+	})(i + 2);
 }
 for (var key in base) {
 	if (key != null && base[key] != null) {
-		var easeIn = base[key];
-		fluidScroll.easing["easeIn" + key] = easeIn;
-		fluidScroll.easing["easeOut" + key] = function(p) {
-			return 1 - easeIn(1 - p);
-		};
-		fluidScroll.easing["easeInOut" + key] = function(p) {
-			return p < 0.5 ?
-				easeIn(p * 2) / 2 :
-				1 - easeIn(p * -2 + 2) / 2;
-		};
+		(function(easeIn) {
+			fluidScroll.easing["easeIn" + key] = easeIn;
+			fluidScroll.easing["easeOut" + key] = function(p) {
+				return 1 - easeIn(1 - p);
+			};
+			fluidScroll.easing["easeInOut" + key] = function(p) {
+				return p < 0.5 ?
+					easeIn(p * 2) / 2 :
+					1 - easeIn(p * -2 + 2) / 2;
+			};
+		})(base[key]);
 	}
 }
 fluidScroll.scrolling = function() {
